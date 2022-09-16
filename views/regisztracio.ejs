@@ -1,0 +1,26 @@
+<%- include('header') -%>
+
+<div class="container">
+    <div  class="row h-100 d-f lex align-items-center justify-content-center" >
+        <div class="col-12 col-md-4" >
+            <h2>Regisztracio</h2>
+            <form method="POST">
+                <div class="form-group">
+                    <label for="azonosito">Azonosito:</label>
+                    <input type="text" class="form-control" id="azonosito" placeholder="Azonosito" name="azonosito">
+                </div>
+                <div class="form-group">
+                    <label for="jelszo">Jelszo:</label>
+                    <input type="password" class="form-control" id="jelszo" placeholder="Jelszo" name="jelszo">
+                </div>
+                <input  type="submit" class="btn btn-primary" value="Regisztracio"/>
+                <a href="/" type="submit" class="btn btn-link">Megse</a>
+            </form>
+            <%= (typeof errors ==='undefined')?'':errors %>
+
+    </div>
+</div>
+</div>
+
+    <%- include('hibak') -%>
+    <%- include('footer') -%>

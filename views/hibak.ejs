@@ -1,0 +1,11 @@
+<div  class="row h-100" >
+    <div class="collapse" id="collapseErrors">
+      <div class="card card-body">
+        <% if(typeof hibak === 'undefined'){%>Nincs hiba. <%}else{hibak.forEach(function(hiba){ %>
+          <%= hiba.Nev%>
+          <a href="/hiba/torles/<%=hiba._id%>" type="submit" class="btn btn-primary">X</a>
+          <br>
+          <% })} %>
+        </div>
+      </div>
+    </div>

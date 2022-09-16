@@ -1,0 +1,11 @@
+/ -index.html
+/targy/:userid
+/orarend/:userid
+/regisztracio
+/modositas/:userid
+
+ <% for(key in subjects) {var item = subjects[key]; %>
+            <%= item.Targynev %>
+            <%= item.Idopont %>
+            <%= item.Kredit %>
+            <% } %>
