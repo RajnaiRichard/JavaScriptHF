@@ -4,9 +4,11 @@ var inverseAuthMW = require('../middlewares/user/inverseAuth');
 var loginUserMW = require('../middlewares/user/loginUser');
 var logoutUserMW = require('../middlewares/user/logoutUser');
 var createUserMW = require('../middlewares/user/createUser');
-var getUserMW = require('../middlewares/user/getUser');
+var getUserByParamMW = require('../middlewares/user/getUserByParam');
+var getUserBySessionMW = require('../middlewares/user/getUserBySession');
 var updateUserMW = require('../middlewares/user/updateUser');
 var deleteUserMW = require('../middlewares/user/deleteUser');
+var forgotpwMW = require('../middlewares/user/forgotpw');
 
 
 var getErrorsMW = require('../middlewares/error/getErrors');
@@ -33,47 +35,46 @@ module.exports = function (app) {
   inverseAuthMW(objectRepository),
   loginUserMW(objectRepository),
    getErrorsMW(objectRepository),
-  mainRedirectMW(objectRepository),
   renderMW(objectRepository, 'bejelentezes')
   );
 
   app.use('/kijelentkezes',
   authMW(objectRepository),
-  logoutUserMW(objectRepository),
-  mainRedirectMW(objectRepository)
+  logoutUserMW(objectRepository)
   );
 
   app.use('/regisztracio',
   inverseAuthMW(objectRepository),
-   runErrorMW(objectRepository),
-   generateErrorMW(objectRepository),
-   getErrorsMW(objectRepository),
   createUserMW(objectRepository),
   renderMW(objectRepository, 'regisztracio')
   );
 
-  app.use('/adatmodositas/:userid',
+  app.use('/adatmodositas',
   authMW(objectRepository),
-     runErrorMW(objectRepository),
-     generateErrorMW(objectRepository),
-     getErrorsMW(objectRepository),
-  getUserMW(objectRepository),
+  getErrorsMW(objectRepository),
+  generateErrorMW(objectRepository),
+  runErrorMW(objectRepository),
+  getErrorsMW(objectRepository),
+  getUserBySessionMW(objectRepository),
   updateUserMW(objectRepository),
   renderMW(objectRepository, 'adatmodositas')
     );
 
-  app.use('/torles/:userid',
+  app.use('/torles',
   authMW(objectRepository),
-     runErrorMW(objectRepository),
-     generateErrorMW(objectRepository),
-     getErrorsMW(objectRepository),
-  getUserMW(objectRepository),
+  getUserBySessionMW(objectRepository),
   deleteUserMW(objectRepository),
-  mainRedirectMW(objectRepository)
+  logoutUserMW(objectRepository)
     );
-
-    app.get('/',
-    mainRedirectMW(objectRepository),
+    app.use('/elfelejtettjelszo',
+    //inverseAuthMW(objectRepository),
+    forgotpwMW(objectRepository),
+    renderMW(objectRepository, 'elfelejtettjelszo')
+      );
+  
+    app.use('/',
+    inverseAuthMW(objectRepository),
+    loginUserMW(objectRepository),
     renderMW(objectRepository, 'index')
     );
 

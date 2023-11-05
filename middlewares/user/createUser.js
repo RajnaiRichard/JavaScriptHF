@@ -1,4 +1,4 @@
-
+//regisztráció, felhasználó létrehozása az adatbázisban
 
 var requireOption = require('../common').requireOption;
 
@@ -27,8 +27,8 @@ module.exports = function (objectRepository){
                 user.Jelszo=req.body.jelszo;
                 
                 user.save((err)=>{
-                if(err!==null)
-                console.log(err);
+                if(err)
+                return next(err);
 
                 });
             return next();

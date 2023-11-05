@@ -1,4 +1,4 @@
-
+// az itt található előre definiált tárgyak rárakása a res.localsra majd később megjelenítése a weboldalon
 
 module.exports = function (objectRepository){
 

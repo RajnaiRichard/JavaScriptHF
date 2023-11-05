@@ -1,4 +1,4 @@
-
+//felhasználó lekérdezése az adatbázisból a paramban megadott ID alapján
 var requireOption = require('../common').requireOption;
 
 module.exports = function (objectRepository){

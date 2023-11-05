@@ -1,4 +1,4 @@
-
+//az összes hiba lekérdezése az adatbázisból
 var requireOption = require('../common').requireOption;
 
 module.exports = function (objectRepository){
@@ -8,12 +8,18 @@ module.exports = function (objectRepository){
     return function(req,res,next)
     {
 
-        errorModel.find({},(err,result)=>{
+        errorModel.find({
+            _Tulajdonos: req.session.userid
+        },(err,result)=>{
             if(err)
             {next(err);}
-            res.local.hibak=result;
+            if(result)
+            {res.locals.hibak=result;}
+            else
+            {res.locals.hibak=undefined;}
             return next();
         })
-        
+        res.locals.errorsOn = req.session.errorsOn;
+        res.locals.showErrors = req.session.showErrors;
     }
 }

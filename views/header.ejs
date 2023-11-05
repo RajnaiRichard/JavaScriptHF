@@ -19,18 +19,19 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link" href="/targyak">Targyak</a>
+              <a class="nav-link" href="/targyak/">Targyak</a>
             </li>
            
             <li class="nav-item" >
                 <div class = "w-100 d-flex justify-content-end">
-                    <div><a class="nav-link" href="orerend/<%= (typeof user === 'undefined') ? '' : user._id%>">Orarend</a></div>
+                    <div><a class="nav-link" href="/orarend">Orarend</a></div>
             </div>
             </li>
 
           <li class="nav-item" >
             <div class = "w-100 d-flex justify-content-end">
-                <div><a class="nav-link" data-toggle="collapse" href="#collapseErrors" role="button" aria-expanded="false" aria-controls="collapseErrors">Hibak</a></div>
+              <div><a class="nav-link" href="/errorShow" role="button" aria-expanded="false" aria-controls="collapseErrors">Hibak</a></div> 
+              
         </div>
         </li>
     
@@ -43,11 +44,11 @@
             </li>
             <li class="nav-item" >
                 <div class = "w-100 d-flex justify-content-end">
-                    <div><a class="nav-link" href="/adatmodositas/<%= (typeof user === 'undefined') ? '' : user._id%>">Adatok modositasa</a></div>
+                    <div><a class="nav-link" href="/adatmodositas/<%if (typeof userid !== 'undefined') {%><%=userid%><%}%>">Adatok modositasa</a></div>
             </div>
             <li class="nav-item" >
               <div class = "w-100 d-flex justify-content-end">
-                  <div><a class="nav-link" href="/adatmodositas/63239b3094651288266bdac5">Adatok modositasa2</a></div>
+                  <div><a class="nav-link" href="/kijelentkezes">Kijelentkezes</a></div>
           </div>
             </li>
           </ul>

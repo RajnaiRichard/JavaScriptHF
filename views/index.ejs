@@ -3,19 +3,20 @@
     <div  class="row h-100 d-flex align-items-center justify-content-center" >
         <div class="col-12 col-md-4" >
           <h2>Bejelentkezes</h2>
-            <form>
+            <form method="POST">
                 <div class="form-group">
                     <label for="azonosito">Azonosito:</label>
-                    <input type="text" class="form-control" id="azonosito" placeholder="Azonosito">
+                    <input type="text" class="form-control" id="azonosito" placeholder="Azonosito" name="azonosito">
                 </div>
                 <div class="form-group">
                     <label for="jelszo">Jelszo:</label>
-                    <input type="password" class="form-control" id="jelszo" placeholder="Jelszo">
+                    <input type="password" class="form-control" id="jelszo" placeholder="Jelszo" name ="jelszo">
                 </div>
-                <input href="/bejelentezes" type="submit" class="btn btn-primary" value="Bejelentkezes"/>
+                <input type="submit" class="btn btn-primary" value="Bejelentkezes"/>
                 <a href="/regisztracio" type="submit" class="btn btn-primary">Regisztracio</a>
+                <a href="/elfelejtettjelszo" type="submit" class="btn btn-link">Elfelejtetted a jelszavad?</a>
             </form>
-            
+
         </div>
     </div>
 </div>

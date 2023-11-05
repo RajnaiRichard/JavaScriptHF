@@ -1,153 +1,47 @@
 <%- include('header') -%>
 
-<div class="container" style = "max-height:800px" >
+<div class="container">
     <div  class="row h-100 d-flex align-items-center justify-content-center" >
         <div class="col-12 col-md-10" >
+
+                 
         
             <table class="table table-striped table-bordered ">
                 <tr>
                     <th>
                        
                     </th>
+                    <%for(i=0;i<5;i++)
+                    {%>
+                    
                     <th>
-                        Hetfo 
+                        <%=napok[i]%>
                     </th>
-                    <th>
-                        Kedd
-                    </th>
-
-                    <th>
-                       Szerda
-                    </th>
-                    <th>
-                        Csutorok
-                    </th>
-                    <th>
-                        Pentek
-                    </th>
+                    <%}%>
                 </tr>
                 
-                <tr>
+                <% for(j=0;j<6;j++)
+                {%>
+                    <tr>
+                        <th>
+                            <%=idopontok[j]%>
+                        </th>
+                    <%for(i=0;i<5;i++)
+                    {%>
+                    
                     <th>
-                        8-10 
-                    </th>
-                    <th>
-                        
-                    </th>
-                    <th>
-                    </th>
-
-                    <th>
-                       
-                    </th>
-                    <th>
-                        
-                    </th>
-                    <th>
-                        
-                    </th>
-                </tr>
-                <tr>
-                    <th>
-                       10-12
-                    </th>
-                    <th>
-                        
-                    </th>
-                    <th>
+                       <%if(typeof felhasznaloiTargyak !== 'undefined'){felhasznaloiTargyak.forEach(function(targy,index,object){
+                        if(targy.Idopont === napok[i] + ' ' + idopontok[j])
+                        {%>
+                            <%=targy.Targynev%>
+                        <% object.splice(index,1)}
+                       })%>
                     </th>
 
-                    <th>
-                       
-                    </th>
-                    <th>
-                        
-                    </th>
-                    <th>
-                        
-                    </th>
-                </tr>
-                <tr>
-                    <th>
-                       12-14
-                    </th>
-                    <th>
-                        
-                    </th>
-                    <th>
-                    </th>
-
-                    <th>
-                       
-                    </th>
-                    <th>
-                        
-                    </th>
-                    <th>
-                        
-                    </th>
-                </tr>
-                <tr>
-                    <th>
-                       14-16
-                    </th>
-                    <th>
-                        
-                    </th>
-                    <th>
-                    </th>
-
-                    <th>
-                       
-                    </th>
-                    <th>
-                        
-                    </th>
-                    <th>
-                        
-                    </th>
-                </tr>
-                <tr>
-                    <th>
-                       16-18
-                    </th>
-                    <th>
-                        
-                    </th>
-                    <th>
-                    </th>
-
-                    <th>
-                       
-                    </th>
-                    <th>
-                        
-                    </th>
-                    <th>
-                        
-                    </th>
-                </tr>   
-                <tr>
-                    <th>
-                       18-20
-                    </th>
-                    <th>
-                        
-                    </th>
-                    <th>
-                    </th>
-
-                    <th>
-                       
-                    </th>
-                    <th>
-                        
-                    </th>
-                    <th>
-                        
-                    </th>
-                </tr>
-              
+                    <%}}%>
+                    </tr>
+                <%}%>
+                
             
             </table>
     

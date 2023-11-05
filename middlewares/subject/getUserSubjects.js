@@ -1,23 +1,23 @@
-// felhasználói fiók törlése az adatbáisból
+// a felhasználó által felvett tárgyak lekérése az adatbázisba
+
 var requireOption = require('../common').requireOption;
 
 module.exports = function (objectRepository){
 
     var userModel = requireOption(objectRepository, 'userModel');
+
     return function(req,res,next)
     {
         userModel.findOne({
             _id: req.session.userid
         },(err,result)=>{
-            if((err) || (!result))
-            {next(err);}
+            if(err)
+            return next(err);
 
-            result.remove((err)=> {
-                if (err) {
-                  return next(err);
-                }})
-        })
-
-            return next();
+            res.locals.felhasznaloiTargyak=result.Targyak;
+             
+            return next();   
+        });
+        
     }
 }

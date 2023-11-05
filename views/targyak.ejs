@@ -18,7 +18,7 @@
                     <th>
                     </th>
                 </tr>
-                <% targyak.forEach(function(targy){ %>
+                <% if(typeof targyak !== 'undefined') {targyak.forEach(function(targy){ %>
                     <tr>
                         <td>
                     <%= targy.Targynev %>
@@ -32,10 +32,10 @@
                         <%= targy.Kredit %>
                     </td>
                     <td>
-                        <a href="/targy/felvetel/<%=targy._id%>" type="submit" class="btn btn-primary">Felvetel</a>
-                        <a href="/targy/leadas/<%=targy._id%>" type="submit" class="btn btn-primary">Leadas</a>
+                        <a href="/targyak/felvetel/<%=targy._id%>" type="submit" class="btn btn-primary">Felvetel</a>
+                        <a href="/targyak/leadas/<%=targy._id%>" type="submit" class="btn btn-primary">Leadas</a>
                     </td>
-                    <% }) %>
+                    <% }) }%>
                 </tr>
                 
             </table>

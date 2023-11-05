@@ -3,6 +3,7 @@ var db = require('../config/db');
 
 var Error = db.model('Error',{
     Nev: String,
+    Script: String,
     _Tulajdonos:{
         type: Schema.Types.ObjectId,
         ref: 'User'

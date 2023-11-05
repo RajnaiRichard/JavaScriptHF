@@ -1,4 +1,4 @@
-
+//a paramban megadott ID-val rendelkező hiba kitörlése az adatbázisból
 var requireOption = require('../common').requireOption;
 
 module.exports = function (objectRepository){
@@ -6,14 +6,21 @@ module.exports = function (objectRepository){
     var errorModel = requireOption(objectRepository, 'errorModel');
     return function(req,res,next)
     {
-        if ((typeof res.locals.error === 'undefined')) 
+        if ((req.params.errorid === '')) 
         {return next();}
 
-        res.locals.user.remove((err)=> {
-            if (err) {
-              return next(err);
-            }
-            return next();
+        errorModel.findOne({
+            _id: req.params.errorid
+        },(err,result)=>{
+            if((err) || (!result))
+            {next(err);}
+
+            result.remove((err)=> {
+                if (err) {
+                  return next(err);
+                }})
+                res.redirect('back');
         })
+        
     }
 }

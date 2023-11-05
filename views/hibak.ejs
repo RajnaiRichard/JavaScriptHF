@@ -1,11 +1,19 @@
 <div  class="row h-100" >
-    <div class="collapse" id="collapseErrors">
+    <div <%if(typeof showErrors !== 'undefined'){if(showErrors){%>class="collapse show"<%}else{%>class="collapse"<%}}else{%>class="collapse"<%}%>  id="collapseErrors">
       <div class="card card-body">
-        <% if(typeof hibak === 'undefined'){%>Nincs hiba. <%}else{hibak.forEach(function(hiba){ %>
+        <table class="table table-striped table-bordered ">
+          <a href="/errorOnOff" name="errorsOnButton"class="btn btn-danger" ><%if(typeof errorsOn !== 'undefined'){if(errorsOn){%>A hibak kikapcsolása<%}else{%>A hibak bekapcsolása<%}}else{%>A hibak bekapcsolása<%}%></a>
+        <% if(typeof hibak === 'undefined'){%>Nincs hiba. <%}else{hibak.forEach((hiba)=>{ %>
+            <tr>
+              <th>
           <%= hiba.Nev%>
           <a href="/hiba/torles/<%=hiba._id%>" type="submit" class="btn btn-primary">X</a>
-          <br>
+         </th>
+         </tr>
           <% })} %>
+          </table>
+          <% if(typeof alertmsg !== 'undefined'){%><script>alert(<%- JSON.stringify(alertmsg) %>)</script><%}%>
+          
         </div>
       </div>
     </div>
